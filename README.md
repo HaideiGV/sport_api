@@ -1,18 +1,10 @@
 # SportApi
 
-To start your Phoenix server:
+To start your Phoenix server run: `docker-compose up` 
 
-  * Install dependencies with `mix deps.get`
-  * Start Phoenix endpoint with `mix phx.server`
+Now you can visit `http://localhost:4000` - start page from your browser.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Endpoints:
+    - http://localhost:4000/leagues - list of leagues.
+    - http://localhost:4000/leagues?season=2015-2016 - filtered list of leagues by specific season.
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix

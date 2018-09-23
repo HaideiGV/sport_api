@@ -10,29 +10,15 @@ defmodule SportApiWeb.PageController do
     data = data
     |> Enum.slice(1, Enum.count(data))
     |> Enum.map( 
-      fn ({:ok, [id, div, season, date, home_team, away_team, fthg, ftag, ftr, hthg, htag, htr]}) -> %{
-        "id": id,
-        "season": "#{String.slice(season, 0, 4)}-#{String.slice(season, 0, 2) <> String.slice(season, 4, 6)}",
-        "pair": "#{home_team} #{away_team}",
-        "date": date
+      fn ({:ok, [id, _div, season, date, home_team, away_team, _fthg, _ftag, _ftr, _hthg, _htag, _htr]}) -> %{
+        "id" => id, "date" => date, "pair" => "#{home_team} #{away_team}",
+        "season" => "#{String.slice(season, 0, 4)}-#{String.slice(season, 0, 2) <> String.slice(season, 4, 6)}"
       }
     end)
-    IO.inspect params
-    IO.inspect conn
-    season = Map.get(params, "season")
-    pair = Map.get(params, "pair")
-    IO.inspect season
-    IO.inspect List.first(data)
-    if season do
-      data = data |> Enum.filter(fn(row) -> Map.get(row, :season) == season end)
-    else
-      data = []
-    end
 
-    if pair do
-      data = data |> Enum.filter(fn(row) -> Map.get(row, "pair") == pair end)
-    else
-      data = []
+    request_season = Map.get(params, "season")
+    if request_season do
+      json conn, Enum.filter(data, fn(row) -> Map.get(row, "season") == request_season end)
     end
 
     json conn, data
