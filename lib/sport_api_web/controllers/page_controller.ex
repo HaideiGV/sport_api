@@ -12,10 +12,6 @@ defmodule SportApiWeb.PageController do
     "#{first}-#{second}#{third}"
   end
 
-  # def filter_row(row, filter_map) do
-  #   Enum.map(filter_map, fn({key, value}) -> Map.get(raw, key) == value)
-  # end
-
   def get_leagues(%Plug.Conn{params: params} = conn, _params) do
     data = File.stream!(Path.absname("data.csv")) |> CSV.decode
     data = data
@@ -31,11 +27,11 @@ defmodule SportApiWeb.PageController do
     end)
 
     request_season = Map.get(params, "season")
-    request_division = Map.get(params, "division")
     if request_season do
       json conn, Enum.filter(data, fn(row) -> Map.get(row, "season") == request_season end)
     end
 
+    request_division = Map.get(params, "division")
     if request_division do
       json conn, Enum.filter(data, fn(row) -> Map.get(row, "division") == request_division end)
     end
