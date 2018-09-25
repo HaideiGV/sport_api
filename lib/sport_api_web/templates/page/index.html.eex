@@ -5,7 +5,7 @@
     <ul>
       <ol><a href="/leagues">/leagues</a></ol>
       <ol><a href="/leagues?season=2015-2016">/leagues?season=2016-2015</a></ol>
-      <ol><a href="/leagues?season=2025-2026">/leagues?season=2025-2026</a></ol>
+      <ol><a href="/leagues?division=SP1">/leagues?division=SP1</a></ol>
     </ul>
   </div>
 </div>
